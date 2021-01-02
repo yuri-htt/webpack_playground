@@ -52,6 +52,12 @@ module.exports = {
     }]
   },
 
+  resolve: {
+    alias: {
+        'vue$': 'vue/dist/vue.esm.js',
+    }
+  },
+
   optimization: {
     minimizer: [new TerserPlugin()],
 

@@ -1,3 +1,8 @@
-import { bro } from './bro';
+import Vue from "vue";
 
-console.log(bro('Yuri'))
+new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
