@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-
+const { VueLoaderPlugin } = require('vue-loader');
 module.exports = {
   mode: 'development',
 
@@ -21,11 +21,15 @@ module.exports = {
 
   plugins: [
     new webpack.ProgressPlugin(),
-    new MiniCssExtractPlugin({ filename:'main.[contenthash].css' })
+    new MiniCssExtractPlugin({ filename:'main.[contenthash].css' }),
+    new VueLoaderPlugin()
   ],
 
   module: {
     rules: [{
+      test: /\.vue$/,
+      loader: 'vue-loader'
+    },{
       test: /\.(js|jsx)$/,
       include: [path.resolve(__dirname, 'src')],
       loader: 'babel-loader'
