@@ -29,10 +29,21 @@ module.exports = {
     rules: [{
       test: /\.vue$/,
       loader: 'vue-loader'
-    },{
+    }, {
       test: /\.(js|jsx)$/,
       include: [path.resolve(__dirname, 'src')],
       loader: 'babel-loader'
+    }, {
+      test: /\.ts$/,
+      use: [
+        {
+          loader: 'ts-loader',
+          options: {
+            // .vueファイルをtsとして監視するように追加
+            appendTsSuffixTo: [/\.vue$/],
+          }
+        }
+      ]
     }, {
       test: /.(scss|css)$/,
 
